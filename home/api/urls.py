@@ -4,9 +4,13 @@ from .views import (
     BlogDetailAPIView,
     BlogUpdateAPIView,
     BlogDeleteAPIView,
+    BlogCreateAPIView
 )
 
+app_name = "blog"
+
 urlpatterns = [
+    path("create/", BlogCreateAPIView.as_view(), name="api-create"),
     path("list/", BlogListAPIView.as_view(), name="api-list"),
     path("detail/<pk>", BlogDetailAPIView.as_view(), name="api-detail"),
     path("update/<pk>", BlogUpdateAPIView.as_view(), name="api-update"),

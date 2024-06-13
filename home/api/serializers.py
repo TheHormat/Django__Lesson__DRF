@@ -3,6 +3,15 @@ from ..models import Blog
 
 
 class BlogSerializer(serializers.ModelSerializer):
+    url = serializers.HyperlinkedIdentityField(
+        view_name="blog:api-detail", lookup_field = "pk"
+    )
+    
+    username = serializers.SerializerMethodField()
+    
+    def get_username(self, obj):
+        return str(obj.user.username)
+    
     class Meta:
         model = Blog
-        fields = ["id", "title", "content", "created_date", "draft"]
+        fields = ["url","username", "title", "content", "created_date", "image", "draft"]

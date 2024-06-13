@@ -9,6 +9,7 @@ class Blog(models.Model):
     title = models.CharField(max_length=30)
     content = models.TextField()
     created_date = models.DateTimeField(auto_now_add=True)
+    image = models.ImageField(upload_to="Blog Images", blank=True, null=True)
     draft = models.BooleanField(default=False)
 
     def __str__(self):
